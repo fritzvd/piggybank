@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy Bank</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #app {
+            width: 80vw;
+        }
+
+        meter {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+<div id="app">
+  <h2>{{ total }}</h2>
+  <p>
+  <meter id="fuel"
+         min="0" v-bind:max="target"
+         low="3" high="6" optimum="10"
+         v-bind:value="total">
+      at 50/100
+  </meter>
+  </p>
+  <p>
+      <input type="number" v-model="target">
+  </p>
+  <p>
+  <a v-on:click="addCoin('five')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/5_eurocent_common_1999.jpg/68px-5_eurocent_common_1999.jpg"></a>
+  <a v-on:click="addCoin('ten')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/10_eurocent_common_2007.png/64px-10_eurocent_common_2007.png"></a>
+  <a v-on:click="addCoin('twenty')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/20_eurocent_common_2007.jpg/72px-20_eurocent_common_2007.jpg"></a>
+  <a v-on:click="addCoin('fifty')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/50_eurocent_common_2007.jpg/79px-50_eurocent_common_2007.jpg"></a>
+  <a v-on:click="addCoin('one')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/26/Common_face_of_one_euro_coin.jpg/80px-Common_face_of_one_euro_coin.jpg"></a>
+  <a v-on:click="addCoin('two')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Common_face_of_two_euro_coin.jpg/83px-Common_face_of_two_euro_coin.jpg"></a>
+  </p>
+</div>
+
+<script>
+    new Vue({
+  el: '#app',
+  data: {
+    two: parseFloat(localStorage.getItem('two')) || 0,
+    one: parseFloat(localStorage.getItem('one')) || 0,
+    fifty: parseFloat(localStorage.getItem('fifty')) || 0,
+    twenty: parseFloat(localStorage.getItem('twenty')) || 0,
+    ten: parseFloat(localStorage.getItem('ten')) || 0,
+    five: parseFloat(localStorage.getItem('five')) || 0,
+    target: parseFloat(localStorage.getItem('target') )|| 10,
+    total: parseFloat(localStorage.getItem('savedAmount')) || 0
+  },
+  methods: {
+    addCoin: function (coin) {
+        console.log(coin, this)
+        this[coin] = this[coin] + 1;
+        this.total = parseFloat(this.two * 2+ this.one + this.fifty * 0.5 + this.twenty * 0.2 + this.ten *0.1 + this.five *0.05).toFixed(2)
+        localStorage.setItem('savedAmount', this.total)
+        localStorage.setItem('one', this.one)
+        localStorage.setItem('two', this.two)
+        localStorage.setItem('fifty', this.fifty)
+        localStorage.setItem('twenty', this.twenty)
+        localStorage.setItem('ten', this.ten)
+        localStorage.setItem('five', this.five)
+    }
+  }
+})
+</script>
+
+</body>
+</html>
