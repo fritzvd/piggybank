@@ -122,9 +122,9 @@
           five: parseFloat(localStorage.getItem("five")) || 0,
           target: parseFloat(localStorage.getItem("target")) || 10,
           total: parseFloat(localStorage.getItem("savedAmount")) || 0,
-          optimum: parseFloat(localStorage.getItem("savedAmount")) || 0,
-          high: parseFloat(localStorage.getItem("savedAmount")) * 0.67 || 0,
-          low: parseFloat(localStorage.getItem("savedAmount")) * 0.3 || 0,
+          optimum: parseFloat(localStorage.getItem("target")) || 0,
+          high: parseFloat(localStorage.getItem("target")) * 0.67 || 0,
+          low: parseFloat(localStorage.getItem("target")) * 0.3 || 0,
         },
         methods: {
           clear: function () {
@@ -142,6 +142,7 @@
                 this.ten * 0.1 +
                 this.five * 0.05
             ).toFixed(2);
+            localStorage.setItem("target", this.target);
             localStorage.setItem("savedAmount", this.total);
             localStorage.setItem("one", this.one);
             localStorage.setItem("two", this.two);
