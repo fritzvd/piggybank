@@ -141,8 +141,8 @@
             console.log(coin, this);
             this[coin] = this[coin] + 1;
             this.total = parseFloat(
-              this.fiveNote * 5,
-              this.two * 2 +
+              this.fiveNote * 5 +
+                this.two * 2 +
                 this.one +
                 this.fifty * 0.5 +
                 this.twenty * 0.2 +
