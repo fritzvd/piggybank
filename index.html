@@ -104,6 +104,11 @@
           ><img
             src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Common_face_of_two_euro_coin.jpg/83px-Common_face_of_two_euro_coin.jpg"
         /></a>
+        <a v-on:click="addCoin('fiveNote')"
+          ><span>{{fiveNote }}</span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/07/5_Euro.Recto.printcode_place.png"
+        /></a>
       </p>
       <p>
         <button v-on:click="clear">Empty Piggy Bank</button>
@@ -120,6 +125,7 @@
           twenty: parseFloat(localStorage.getItem("twenty")) || 0,
           ten: parseFloat(localStorage.getItem("ten")) || 0,
           five: parseFloat(localStorage.getItem("five")) || 0,
+          fiveNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
           target: parseFloat(localStorage.getItem("target")) || 10,
           total: parseFloat(localStorage.getItem("savedAmount")) || 0,
           optimum: parseFloat(localStorage.getItem("target")) || 0,
@@ -135,6 +141,7 @@
             console.log(coin, this);
             this[coin] = this[coin] + 1;
             this.total = parseFloat(
+              this.fiveNote * 5,
               this.two * 2 +
                 this.one +
                 this.fifty * 0.5 +
@@ -150,6 +157,7 @@
             localStorage.setItem("twenty", this.twenty);
             localStorage.setItem("ten", this.ten);
             localStorage.setItem("five", this.five);
+            localStorage.setItem("fiveNote", this.fiveNote);
           },
         },
       });
