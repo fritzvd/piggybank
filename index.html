@@ -17,6 +17,10 @@
         align-items: center;
       }
 
+      .coin {
+        width: 100px;
+      }
+
       input,
       button {
         padding: 1em;
@@ -77,37 +81,53 @@
         <a v-on:click="addCoin('five')"
           ><span>{{five}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/5_eurocent_common_1999.jpg/68px-5_eurocent_common_1999.jpg"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/1/1e/5_eurocent_common_1999.png"
         /></a>
         <a v-on:click="addCoin('ten')"
           ><span>{{ten}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/10_eurocent_common_2007.png/64px-10_eurocent_common_2007.png"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/9/9d/10_eurocent_common_2007.png"
         /></a>
         <a v-on:click="addCoin('twenty')"
           ><span>{{twenty}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/20_eurocent_common_2007.jpg/72px-20_eurocent_common_2007.jpg"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/9/9c/20_eurocent_common_2007.png"
         /></a>
         <a v-on:click="addCoin('fifty')"
           ><span>{{fifty}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/50_eurocent_common_2007.jpg/79px-50_eurocent_common_2007.jpg"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/3/39/50_eurocent_common_2007.png"
         /></a>
         <a v-on:click="addCoin('one')"
           ><span>{{one}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/2/26/Common_face_of_one_euro_coin.jpg/80px-Common_face_of_one_euro_coin.jpg"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Common_face_of_one_euro_coin.png/300px-Common_face_of_one_euro_coin.png"
         /></a>
         <a v-on:click="addCoin('two')"
           ><span>{{two}}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Common_face_of_two_euro_coin.jpg/83px-Common_face_of_two_euro_coin.jpg"
+            class="coin"
+            src="https://upload.wikimedia.org/wikipedia/en/6/65/Common_face_of_two_euro_coin.png"
         /></a>
         <a v-on:click="addCoin('fiveNote')"
           ><span>{{fiveNote }}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/EUR_5_obverse_%282013_issue%29.png/100px-EUR_5_obverse_%282013_issue%29.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/EUR_5_obverse_%282002_issue%29.jpg/172px-EUR_5_obverse_%282002_issue%29.jpg"
+        /></a>
+        <a v-on:click="addCoin('tenNote')"
+          ><span>{{tenNote }}</span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/EUR_10_obverse_%282002_issue%29.jpg/182px-EUR_10_obverse_%282002_issue%29.jpg"
+        /></a>
+        <a v-on:click="addCoin('twentyNote')"
+          ><span>{{twentyNote }}</span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/EUR_20_obverse_%282002_issue%29.jpg/190px-EUR_20_obverse_%282002_issue%29.jpg"
         /></a>
       </p>
       <p>
@@ -126,6 +146,8 @@
           ten: parseFloat(localStorage.getItem("ten")) || 0,
           five: parseFloat(localStorage.getItem("five")) || 0,
           fiveNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
+          tenNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
+          twentyNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
           target: parseFloat(localStorage.getItem("target")) || 10,
           total: parseFloat(localStorage.getItem("savedAmount")) || 0,
           optimum: parseFloat(localStorage.getItem("target")) || 0,
@@ -142,6 +164,8 @@
             this[coin] = this[coin] + 1;
             this.total = parseFloat(
               this.fiveNote * 5 +
+                this.tenNote * 10 +
+                this.twentyNote * 20 +
                 this.two * 2 +
                 this.one +
                 this.fifty * 0.5 +
