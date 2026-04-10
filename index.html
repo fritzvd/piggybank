@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
 
     <style>
       body {
-        font-family: "Avenir Next", Helvetica, sans-serif;
+        font-family: 'Avenir Next', Helvetica, sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -119,7 +119,7 @@
           ><span>{{one}}</span
           ><img
             class="coin"
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Common_face_of_one_euro_coin.png/300px-Common_face_of_one_euro_coin.png"
+            src="https://upload.wikimedia.org/wikipedia/en/1/10/Common_face_of_one_euro_coin.png"
         /></a>
         <a v-on:click="addCoin('two')"
           ><span>{{two}}</span
@@ -130,17 +130,17 @@
         <a v-on:click="addCoin('fiveNote')"
           ><span>{{fiveNote }}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/EUR_5_obverse_%282002_issue%29.jpg/172px-EUR_5_obverse_%282002_issue%29.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f5/EUR_5_obverse_%282013_issue%29.png"
         /></a>
         <a v-on:click="addCoin('tenNote')"
           ><span>{{tenNote }}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/EUR_10_obverse_%282002_issue%29.jpg/182px-EUR_10_obverse_%282002_issue%29.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a8/EUR_10_obverse_%282014_issue%29.png"
         /></a>
         <a v-on:click="addCoin('twentyNote')"
           ><span>{{twentyNote }}</span
           ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/EUR_20_obverse_%282002_issue%29.jpg/190px-EUR_20_obverse_%282002_issue%29.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/bb/The_Europa_series_20_€_obverse_side.jpg"
         /></a>
       </p>
       <p>
@@ -150,22 +150,22 @@
 
     <script>
       new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-          two: parseFloat(localStorage.getItem("two")) || 0,
-          one: parseFloat(localStorage.getItem("one")) || 0,
-          fifty: parseFloat(localStorage.getItem("fifty")) || 0,
-          twenty: parseFloat(localStorage.getItem("twenty")) || 0,
-          ten: parseFloat(localStorage.getItem("ten")) || 0,
-          five: parseFloat(localStorage.getItem("five")) || 0,
-          fiveNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
-          tenNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
-          twentyNote: parseFloat(localStorage.getItem("fiveNote")) || 0,
-          target: parseFloat(localStorage.getItem("target")) || 10,
-          total: parseFloat(localStorage.getItem("savedAmount")) || 0,
-          optimum: parseFloat(localStorage.getItem("target")) || 0,
-          high: parseFloat(localStorage.getItem("target")) * 0.67 || 0,
-          low: parseFloat(localStorage.getItem("target")) * 0.3 || 0,
+          two: parseFloat(localStorage.getItem('two')) || 0,
+          one: parseFloat(localStorage.getItem('one')) || 0,
+          fifty: parseFloat(localStorage.getItem('fifty')) || 0,
+          twenty: parseFloat(localStorage.getItem('twenty')) || 0,
+          ten: parseFloat(localStorage.getItem('ten')) || 0,
+          five: parseFloat(localStorage.getItem('five')) || 0,
+          fiveNote: parseFloat(localStorage.getItem('fiveNote')) || 0,
+          tenNote: parseFloat(localStorage.getItem('fiveNote')) || 0,
+          twentyNote: parseFloat(localStorage.getItem('fiveNote')) || 0,
+          target: parseFloat(localStorage.getItem('target')) || 10,
+          total: parseFloat(localStorage.getItem('savedAmount')) || 0,
+          optimum: parseFloat(localStorage.getItem('target')) || 0,
+          high: parseFloat(localStorage.getItem('target')) * 0.67 || 0,
+          low: parseFloat(localStorage.getItem('target')) * 0.3 || 0,
         },
         methods: {
           clear: function () {
@@ -184,17 +184,17 @@
                 this.fifty * 0.5 +
                 this.twenty * 0.2 +
                 this.ten * 0.1 +
-                this.five * 0.05
+                this.five * 0.05,
             ).toFixed(2);
-            localStorage.setItem("target", this.target);
-            localStorage.setItem("savedAmount", this.total);
-            localStorage.setItem("one", this.one);
-            localStorage.setItem("two", this.two);
-            localStorage.setItem("fifty", this.fifty);
-            localStorage.setItem("twenty", this.twenty);
-            localStorage.setItem("ten", this.ten);
-            localStorage.setItem("five", this.five);
-            localStorage.setItem("fiveNote", this.fiveNote);
+            localStorage.setItem('target', this.target);
+            localStorage.setItem('savedAmount', this.total);
+            localStorage.setItem('one', this.one);
+            localStorage.setItem('two', this.two);
+            localStorage.setItem('fifty', this.fifty);
+            localStorage.setItem('twenty', this.twenty);
+            localStorage.setItem('ten', this.ten);
+            localStorage.setItem('five', this.five);
+            localStorage.setItem('fiveNote', this.fiveNote);
           },
         },
       });
